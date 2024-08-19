@@ -80,7 +80,7 @@ if not os.path.isfile(dotenv_path):
 print(dotenv_path)
 load_dotenv(dotenv_path=dotenv_path)
 
-dados_rf = 'http://200.152.38.155/CNPJ/'
+dados_rf = 'http://200.152.38.155/CNPJ/dados_abertos_cnpj/2024-08/'
 
 #%%
 # Read details from ".env" file:
