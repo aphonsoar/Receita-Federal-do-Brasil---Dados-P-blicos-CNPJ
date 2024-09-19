@@ -80,7 +80,12 @@ if not os.path.isfile(dotenv_path):
 print(dotenv_path)
 load_dotenv(dotenv_path=dotenv_path)
 
-dados_rf = 'http://200.152.38.155/CNPJ/'
+# URL de referencia da receita para baixar os arquivos .zip
+base_url = input("Please enter the base URL (e.g., http://200.152.38.155/CNPJ/dados_abertos_cnpj/2024-09/): ").strip()
+
+if not base_url.startswith("http://") and not base_url.startswith("https://"):
+    print("Invalid URL. Please make sure it starts with 'http://' or 'https://'.")
+    exit(1)
 
 #%%
 # Read details from ".env" file:
@@ -101,7 +106,7 @@ except:
     print('Erro na definição dos diretórios, verifique o arquivo ".env" ou o local informado do seu arquivo de configuração.')
 
 #%%
-raw_html = urllib.request.urlopen(dados_rf)
+raw_html = urllib.request.urlopen(base_url)
 raw_html = raw_html.read()
 
 # Formatar página e converter em string
@@ -155,7 +160,7 @@ for l in Files:
     i_l += 1
     print('Baixando arquivo:')
     print(str(i_l) + ' - ' + l)
-    url = dados_rf+l
+    url = base_url+l
     file_name = os.path.join(output_files, l)
     if check_diff(url, file_name):
         wget.download(url, out=output_files, bar=bar_progress)
