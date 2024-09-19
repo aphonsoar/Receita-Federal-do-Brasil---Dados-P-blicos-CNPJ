@@ -81,10 +81,10 @@ print(dotenv_path)
 load_dotenv(dotenv_path=dotenv_path)
 
 # URL de referencia da receita para baixar os arquivos .zip
-base_url = input("Please enter the base URL (e.g., http://200.152.38.155/CNPJ/dados_abertos_cnpj/2024-09/): ").strip()
+base_url = input("Por favor insira a URL que deseja utilizar os dados (ex., http://200.152.38.155/CNPJ/dados_abertos_cnpj/2024-09/): ").strip()
 
 if not base_url.startswith("http://") and not base_url.startswith("https://"):
-    print("Invalid URL. Please make sure it starts with 'http://' or 'https://'.")
+    print("URL inválida")
     exit(1)
 
 #%%
